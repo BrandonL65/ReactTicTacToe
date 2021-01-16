@@ -7,6 +7,7 @@ interface Board {
 }
 
 export class DataStore {
+  @observable name = "Brandon";
   @observable board: Board = {
     top: ["N", "N", "N"],
     middle: ["N", "N", "N"],
