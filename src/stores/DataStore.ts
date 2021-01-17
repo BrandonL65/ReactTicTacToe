@@ -1,4 +1,5 @@
 import { observable } from "mobx";
+import RootStore from "./RootStore";
 
 interface Board {
   top: string[];
@@ -7,6 +8,11 @@ interface Board {
 }
 
 export class DataStore {
+  rootStore: RootStore;
+
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
+  }
   @observable name = "Brandon";
   @observable board: Board = {
     top: ["N", "N", "N"],

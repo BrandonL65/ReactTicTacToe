@@ -4,6 +4,6 @@ export default class RootStore {
   dataStore: DataStore;
 
   constructor() {
-    this.dataStore = new DataStore();
+    this.dataStore = new DataStore(this);
   }
 }
