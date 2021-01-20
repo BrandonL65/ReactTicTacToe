@@ -8,14 +8,12 @@
   margin: auto;
 }
 
-.row1 {
-  background-color: blue;
-}
-
 .board-square {
-  border: 1px solid red;
+  background-color: palevioletred;
+  margin: 2px;
   min-height: 90px;
   min-width: 90px;
-  width: 30%;
-  height: 30%;
+}
+.board-text {
+  text-align: center;
 }
