@@ -1,7 +1,7 @@
-import { observable } from "mobx";
+import { observable, action, makeObservable } from "mobx";
 import RootStore from "./RootStore";
 
-interface Board {
+export interface Board {
   top: string[];
   middle: string[];
   bottom: string[];
@@ -12,11 +12,30 @@ export class DataStore {
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
+    makeObservable(this);
   }
-  @observable name = "Brandon";
+
+  @observable whosTurn: string = "O";
   @observable board: Board = {
-    top: ["N", "N", "N"],
-    middle: ["N", "N", "N"],
-    bottom: ["N", "N", "N"],
+    top: [" ", " ", " "],
+    middle: [" ", " ", " "],
+    bottom: [" ", " ", " "],
   };
+
+  @action turnMade = (row: number, column: number) => {
+    switch (row) {
+      case 0:
+        this.board.top[column] = this.whosTurn;
+        break;
+      case 1:
+        this.board.middle[column] = this.whosTurn;
+        break;
+      case 2:
+        this.board.bottom[column] = this.whosTurn;
+        break;
+    }
+    this.whosTurn = this.whosTurn === "O" ? "X" : "O";
+  };
+
+  //check win
 }
