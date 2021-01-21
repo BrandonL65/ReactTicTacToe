@@ -23,18 +23,30 @@ export class DataStore {
   };
 
   @action turnMade = (row: number, column: number) => {
+    let validMoveOccurred = false;
     switch (row) {
       case 0:
-        this.board.top[column] = this.whosTurn;
+        if (this.board.top[column] === " ") {
+          this.board.top[column] = this.whosTurn;
+          validMoveOccurred = true;
+        }
         break;
       case 1:
-        this.board.middle[column] = this.whosTurn;
+        if (this.board.middle[column] === " ") {
+          this.board.middle[column] = this.whosTurn;
+          validMoveOccurred = true;
+        }
         break;
       case 2:
-        this.board.bottom[column] = this.whosTurn;
+        if (this.board.bottom[column] === " ") {
+          this.board.bottom[column] = this.whosTurn;
+          validMoveOccurred = true;
+        }
         break;
     }
-    this.whosTurn = this.whosTurn === "O" ? "X" : "O";
+    if (validMoveOccurred) {
+      this.whosTurn = this.whosTurn === "O" ? "X" : "O";
+    }
   };
 
   //check win
